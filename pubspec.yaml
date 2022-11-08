@@ -17,6 +17,7 @@ dependencies:
   google_sign_in: ^5.0.3
   http: ^0.13.5
   provider: ^5.0.0
+  flutter_secure_storage: ^3.3.5
 
 dev_dependencies:
   flutter_lints: ^2.0.0

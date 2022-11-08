@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:socialx/forms/register_form.dart';
 import 'package:socialx/services/auth_services.dart';
-import 'package:socialx/views/Tabs_page.dart';
+import 'package:socialx/screens/Tabs_page.dart';
 import 'package:socialx/widgets/container_widgets.dart';
 import 'package:socialx/widgets/text_widgets.dart';
 

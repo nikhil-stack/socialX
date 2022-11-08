@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:socialx/services/auth_services.dart';
 import 'package:socialx/services/http_services.dart';
+import 'package:socialx/services/store_locally.dart';
 
 TextEditingController searchController = TextEditingController();
 
@@ -16,6 +17,8 @@ class _HomePageState extends State<HomePage> {
   bool _isloading = true;
   dynamic apiData = [];
   List<dynamic> news = [];
+  List<dynamic> defaultNews = [];
+
   String? errorMessage = "";
 
   @override
@@ -27,8 +30,10 @@ class _HomePageState extends State<HomePage> {
   void _getNewes() async {
     final data = await HttpServices().getService();
     apiData = data;
+
     setState(() {
       news = apiData['articles'];
+      defaultNews = news;
       _isloading = false;
     });
   }
@@ -73,10 +78,25 @@ class _HomePageState extends State<HomePage> {
     return Text(
       title,
       style: TextStyle(
-          color: Colors.blue,
-          fontSize: 12,
-          fontWeight: type == 'title' ? FontWeight.w700 : FontWeight.normal),
+        color: Colors.blue,
+        fontSize: 12,
+        fontWeight: type == 'title' ? FontWeight.w700 : FontWeight.normal,
+      ),
     );
+  }
+
+  void searchNews(String query) {
+    news = defaultNews;
+    final suggestions = news.where((element) {
+      final newsTitle = element['title'].toString().toLowerCase();
+      final input = query.toLowerCase();
+
+      return newsTitle.contains(input);
+    }).toList();
+
+    setState(() {
+      news = suggestions;
+    });
   }
 
   @override
@@ -87,8 +107,13 @@ class _HomePageState extends State<HomePage> {
         title: Row(
           children: [
             InkWell(
-                onTap: () {},
-                child: const Icon(Icons.search, color: Colors.blue, size: 32)),
+              onTap: () {},
+              child: const Icon(
+                Icons.search,
+                color: Colors.blue,
+                size: 32,
+              ),
+            ),
             Expanded(
               flex: 3,
               child: Form(
@@ -105,6 +130,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       border: InputBorder.none,
                     ),
+                    onChanged: searchNews,
                   ),
                 ),
               ),

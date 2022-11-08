@@ -56,6 +56,5 @@ class Auth {
     } else {
       await _firebaseAuth.signOut();
     }
-
   }
 }

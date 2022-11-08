@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:socialx/views/login_page.dart';
-import 'package:socialx/views/signup_page.dart';
+import 'package:socialx/screens/login_page.dart';
+import 'package:socialx/screens/signup_page.dart';
 
 class TabsPage extends StatefulWidget {
   int index; 
