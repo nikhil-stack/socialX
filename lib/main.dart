@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
-import 'package:socialx/services/auth-services.dart';
-import 'package:socialx/views/home_view.dart';
-import 'package:socialx/views/landing_view.dart';
+import 'package:socialx/services/auth_services.dart';
+import 'package:socialx/views/home_page.dart';
+import 'package:socialx/views/Tabs_page.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,9 +27,9 @@ class MyApp extends StatelessWidget {
         stream: Auth().authStateChanges,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return const HomeView();
+            return const HomePage();
           } else {
-            return LandingView(index: 0);
+            return TabsPage(index: 0);
           }
         },
       ),

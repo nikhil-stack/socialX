@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:socialx/views/login_view.dart';
-import 'package:socialx/views/register_view.dart';
+import 'package:socialx/views/login_page.dart';
+import 'package:socialx/views/signup_page.dart';
 
-class LandingView extends StatefulWidget {
+class TabsPage extends StatefulWidget {
   int index; 
-  LandingView({Key? key, required this.index}) : super(key: key);
+  TabsPage({Key? key, required this.index}) : super(key: key);
 
   @override
-  State<LandingView> createState() => _LandingViewState();
+  State<TabsPage> createState() => _TabsPageState();
 }
 
-class _LandingViewState extends State<LandingView> {
+class _TabsPageState extends State<TabsPage> {
 
   double diductHeight = AppBar().preferredSize.height+24;
 
@@ -133,8 +133,8 @@ class _LandingViewState extends State<LandingView> {
               const SizedBox(height: 14),
               Expanded(
                 child: widget.index == 0
-                ? const LoginView()
-                : const RegisterView(),
+                ? const LoginPage()
+                : const SignupPage(),
               )
             ],
           )

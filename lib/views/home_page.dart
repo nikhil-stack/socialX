@@ -1,18 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:socialx/services/auth-services.dart';
+import 'package:socialx/services/auth_services.dart';
 import 'package:socialx/services/http_services.dart';
 
 TextEditingController searchController = TextEditingController();
 
-class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomeView> createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomeView> {
+class _HomePageState extends State<HomePage> {
   bool _isloading = true;
   dynamic apiData = [];
   List<dynamic> news = [];

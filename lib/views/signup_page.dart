@@ -1,19 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:socialx/forms/register_form.dart';
-import 'package:socialx/services/auth-services.dart';
-import 'package:socialx/views/landing_view.dart';
+import 'package:socialx/services/auth_services.dart';
+import 'package:socialx/views/Tabs_page.dart';
 import 'package:socialx/widgets/container_widgets.dart';
 import 'package:socialx/widgets/text_widgets.dart';
 
-class RegisterView extends StatefulWidget {
-  const RegisterView({Key? key}) : super(key: key);
+class SignupPage extends StatefulWidget {
+  const SignupPage({Key? key}) : super(key: key);
 
   @override
-  State<RegisterView> createState() => _RegisterViewState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _RegisterViewState extends State<RegisterView> {
+class _SignupPageState extends State<SignupPage> {
   String? errorMessage = '';
   bool checkValue = false;
   bool isLoading = false;
@@ -105,7 +105,7 @@ class _RegisterViewState extends State<RegisterView> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LandingView(index: 0)),
+                                builder: (context) => TabsPage(index: 0)),
                           );
                         },
                         child: const RedTextnormal(title: ' Sign In!'),
